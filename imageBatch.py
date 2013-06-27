@@ -1,14 +1,20 @@
 from __future__ import print_function
 from glob import glob
 from shutil import move
+from fnmatch import filter
 
 import os
 
 DESTINATION = 'JPG'
 
+#The following function is a bit more elegant I believe, but is case-sensitive
+# def list_dir_glob():
+# 	print("Finding JPEGs")
+# 	return glob('*.jpg')
+
+#Second revision of list_dir that is now case-insensitive, and semantically inelegant
 def list_dir():
-	print("Finding JPEGs")
-	return glob('*.jpg')
+	return filter(os.listdir('.'), '*.[Jj][Pp][Gg]')
 
 def jpg_move(files):
 	print("Found: " + str(files))
